@@ -1,0 +1,10 @@
+D:\GitProject\LibraryManager\LibraryApp\Interface\bin\Debug\Interface.exe.config
+D:\GitProject\LibraryManager\LibraryApp\Interface\bin\Debug\Interface.exe
+D:\GitProject\LibraryManager\LibraryApp\Interface\bin\Debug\Interface.pdb
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.csproj.AssemblyReference.cache
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.csproj.SuggestedBindingRedirects.cache
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.Properties.Resources.resources
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.csproj.GenerateResource.cache
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.exe
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.pdb
