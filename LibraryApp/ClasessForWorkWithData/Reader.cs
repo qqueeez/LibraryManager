@@ -11,19 +11,19 @@ namespace ClasessForWorkWithData
     {
         // Ім'я читача
         public string Name { get; set; }
-        // Фамілія читача
+        // Прізвище читача
         public string Lastname { get; set; }
         // Адреса читача
         public string Address { get; set; }
         // Номер телефону читача
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         // Електронна адреса читача
         public string Email { get; set; }
         // Інформація про активність читача в бібліотеці (дата початку та закінчення оренди та назва книги)
-        public List<int> ReadersBooks { get; set; }
+        public List<string> ReadersBooks { get; set; }
 
-        // конструктор для заповнення інформації про читача, а саме: ім'я, фамілія, адреса, номер телефону, електронна адреса, та історія оренд книг читача
-        public Reader(string name, string lastname, string address, int phoneNumber, string email, List<int> readerBooks)
+        // конструктор для заповнення інформації про читача, а саме: ім'я, прізвище, адреса, номер телефону, електронна адреса, та історія оренд книг читача
+        public Reader(string name, string lastname, string address, string phoneNumber, string email, List<string> readerBooks)
         {
             Name = name;
             Lastname = lastname;

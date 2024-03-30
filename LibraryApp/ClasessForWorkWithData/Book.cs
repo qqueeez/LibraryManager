@@ -23,6 +23,8 @@ namespace ClasessForWorkWithData
         public string Rent_status { get; set; }
         // історія оренди книги читачами
         public List<string> Rent_history { get; set; }
+        // id книги
+        public int Book_ID { get; set; }
 
         // конструктор для заповнення назви книги, автору, жанру, року написання, статусу оренди та історії оренди
         public Book(string title, string author, string genre, int year, string rent_status, List<string> rent_history)
