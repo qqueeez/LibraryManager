@@ -12,10 +12,10 @@ namespace ClasessForWorkWithData
     // Кожна секція каталогу повинна містити ім’я основної секції та номер.
     public class CatalogSection
     {
-        // Назва каталогу
-        public string CatalogTitle { get; set; }
         // id каталогу
         public int Catalog_ID { get; set; }
+        // Назва каталогу
+        public string CatalogTitle { get; set; }
         
         // конструктор для заповнення інформації щодо назви каталогу та його номеру(ID)
         public CatalogSection(string catalogTitle, int catalog_ID)

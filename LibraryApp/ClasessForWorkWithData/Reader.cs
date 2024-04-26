@@ -9,6 +9,8 @@ namespace ClasessForWorkWithData
     // Клас - читач, який буде зберігати інформацію про читача, таку як ім'я, адреса, контактна інформація та список взятих книг
     public class Reader
     {
+        // id читача
+        public int Reader_ID { get; set; }
         // Ім'я читача
         public string Name { get; set; }
         // Прізвище читача
