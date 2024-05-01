@@ -89,6 +89,7 @@
             this.Controls.Add(this.treeView1);
             this.Name = "BookForm";
             this.Text = "BookForm";
+            this.Load += new System.EventHandler(this.BookForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

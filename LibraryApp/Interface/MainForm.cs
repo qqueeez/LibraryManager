@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClasessForWorkWithData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +18,11 @@ namespace Interface
             InitializeComponent();
         }
 
+        BookLibrary library = new BookLibrary();
+
         private void ButtonShowBook_Click(object sender, EventArgs e)
         {
-            BookForm form = new BookForm();
+            BookForm form = new BookForm(library);
             form.ShowDialog();
         }
     }

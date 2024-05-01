@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClasessForWorkWithData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,23 @@ namespace Interface
 {
     public partial class BookForm : Form
     {
-        public BookForm()
+
+        BookLibrary library;
+
+        private List<int> RemovedSections = new List<int>();
+        private List<int> RemovedBooks = new List<int>();
+
+        public BookForm(BookLibrary library)
         {
+            this.library = library;
             InitializeComponent();
+        }
+
+        private void BookForm_Load(object sender, EventArgs e)
+        {
+            CatalogSection newSection = new CatalogSection("Невизначені");
+            library.AddCatalogSection_In_Library(newSection, ref RemovedSections);
+            Functions.UpdateTreeView(library, ref treeView1);
         }
     }
 }

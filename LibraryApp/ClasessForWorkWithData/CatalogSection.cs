@@ -18,10 +18,11 @@ namespace ClasessForWorkWithData
         public string CatalogTitle { get; set; }
         
         // конструктор для заповнення інформації щодо назви каталогу та його номеру(ID)
-        public CatalogSection(string catalogTitle, int catalog_ID)
+        public CatalogSection(string catalogTitle)
         {
             CatalogTitle = catalogTitle;
-            Catalog_ID = catalog_ID;
         }
+
+        public CatalogSection() { }
     }
 }

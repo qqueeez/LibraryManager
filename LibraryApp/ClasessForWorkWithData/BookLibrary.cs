@@ -194,14 +194,15 @@ namespace ClasessForWorkWithData
         // Знайти каталог за його id
         public CatalogSection FindCatalogSection(int id)
         {
-            
+            CatalogSection section = catalog_section_list.Find(s => s.Catalog_ID == id);
+            return section;
         }
 
         // Знайти книгу у бібліотеці
-        public Book FindBook_In_Library(int id)
-        {
+        //public Book FindBook_In_Library(int id)
+        //{
             
-        }
+        //}
 
 
         // Відв'язати книги від видаленої секції каталогу
@@ -211,10 +212,10 @@ namespace ClasessForWorkWithData
         }
 
         // Пошук книг за назвою
-        public BookLibrary FunctionSearchBookInLibrary(string search_data)
-        {
+        //public BookLibrary FunctionSearchBookInLibrary(string search_data)
+        //{
 
-        }
+        //}
 
 
 
