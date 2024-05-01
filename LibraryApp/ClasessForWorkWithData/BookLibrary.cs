@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ClasessForWorkWithData
     // Клас BookLibrary – це Система управління бібліотекою, він буде зберігати бібліотеку та керувати нею,
     // міститиме методи для додавання нових книг до колекції бібліотеки,
     // реєстрації нових читачів, видачі та повернення книг, а також пошуку книг за різними критеріями.
-    public class BookLibrary
+    public class BookLibrary : IEnumerable
     {
         // список книг в бібліотеці
         public List<Book> book_list = new List<Book>();
@@ -17,7 +18,26 @@ namespace ClasessForWorkWithData
         public List<CatalogSection> catalog_section_list = new List<CatalogSection>();
         // список читачів бібліотеки
         public List<Reader> reader_list = new List<Reader>();
-    
+
+        // Метод потрібен для того щоб можна було перебирати об'єкти типу Book, CatalogSection, Reader за допомогою foreach всеередині об'єкта BookLibrary
+        public IEnumerator GetEnumerator()
+        {
+            foreach (var book in book_list)
+            {
+                yield return book;
+            }
+
+            foreach (var section in catalog_section_list)
+            {
+                yield return section;
+            }
+
+            foreach (var reader in reader_list)
+            {
+                yield return reader;
+            }
+        }
+
         // ============================= КНИГИ ===============================
 
         // Присвоїти книзі id та додати її до бібліотеки
