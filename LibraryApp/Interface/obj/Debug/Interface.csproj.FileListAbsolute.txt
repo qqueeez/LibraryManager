@@ -8,3 +8,5 @@ D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.csproj.Gen
 D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
 D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.exe
 D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.pdb
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.BookForm.resources
+D:\GitProject\LibraryManager\LibraryApp\Interface\obj\Debug\Interface.MainForm.resources
