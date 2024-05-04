@@ -164,7 +164,7 @@ namespace Interface
             }
         }
 
-        public static DataGridView DisplayInfoAboutReadersInDataGrid(List<Reader> users, DataGridView dg)
+        public static DataGridView DisplayInfoAboutReadersInDataGrid(List<Reader> users, BookLibrary library, DataGridView dg)
         {
             // Очищуємо всі стовпці перед додаванням нових
             dg.Columns.Clear();
@@ -246,6 +246,10 @@ namespace Interface
                 {
                     // Отримати ідентифікатор користувача
                     int userId = (int)dg.Rows[e.RowIndex].Cells["id"].Value;
+                    library.DeleteReader(userId);
+
+                    // Обновляем DataGridView с информацией о читателях
+                    DisplayInfoAboutReadersInDataGrid(users, library, dg);
                 }
             };
 

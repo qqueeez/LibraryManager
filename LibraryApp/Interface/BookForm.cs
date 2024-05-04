@@ -32,6 +32,12 @@ namespace Interface
             Functions.UpdateTreeView(library, ref treeView1);
         }
 
+        //Podiya
+        private void DeleteBookForm_BookDeleted(object sender, EventArgs e)
+        {
+            Functions.UpdateTreeView(library, ref treeView1);
+        }
+
         public BookForm(BookLibrary library)
         {
             this.library = library;
@@ -72,11 +78,13 @@ namespace Interface
             TreeNode selectedNode = e.Node;
 
             var tag = selectedNode.Tag;
+            int book_ID = Convert.ToInt32(tag.ToString());
 
             // Якщо натиснутий вузол - книга, відкрити можливість виконати функції над книгою
             if (tag is int && (int)tag >= 10000)
             {
-                InfoAboutBookForm form = new InfoAboutBookForm(library);
+                InfoAboutBookForm form = new InfoAboutBookForm(library, book_ID);
+                form.BookDeleted += DeleteBookForm_BookDeleted;
                 form.ShowDialog();
             }
 
