@@ -163,6 +163,95 @@ namespace Interface
                 }
             }
         }
+
+        public static DataGridView DisplayInfoAboutReadersInDataGrid(List<Reader> users, DataGridView dg)
+        {
+            // Очищуємо всі стовпці перед додаванням нових
+            dg.Columns.Clear();
+
+            // Додаємо стовпці для відображення інформації про користувачів
+            dg.Columns.Add("id", "Ідентифікатор користувача");
+            dg.Columns.Add("full_client_name", "Повне ім'я");
+            dg.Columns.Add("client_address", "Адреса");
+            dg.Columns.Add("client_email", "Електронна пошта");
+            dg.Columns.Add("client_phone", "Номер телефону");
+            dg.Columns.Add("button_show_history", "Переглянути історію оренди"); // Кнопка для перегляду історії оренди
+            dg.Columns.Add("button_give_book", "Видати книгу");   // Кнопка для видачі книги
+            dg.Columns.Add("button_delete_user", "Видалити читача"); // Кнопка для видалення користувача
+
+            foreach (DataGridViewColumn column in dg.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+
+            foreach (var user in users)
+            {
+                // Створюємо рядок даних для кожного користувача
+                DataGridViewRow row = new DataGridViewRow();
+
+                // Додаємо дані користувача в рядок
+                row.Cells.Add(new DataGridViewTextBoxCell() { Value = user.Reader_ID });
+                row.Cells.Add(new DataGridViewTextBoxCell() { Value = user.Full_name });
+                row.Cells.Add(new DataGridViewTextBoxCell() { Value = user.Address });
+                row.Cells.Add(new DataGridViewTextBoxCell() { Value = user.Email });
+                row.Cells.Add(new DataGridViewTextBoxCell() { Value = user.PhoneNumber });
+
+                // Додаємо рядок з кнопками в DataGridView
+                DataGridViewButtonCell showHistory = new DataGridViewButtonCell();
+                showHistory.Value = "";
+                row.Cells.Add(showHistory);
+
+                DataGridViewButtonCell giveBook = new DataGridViewButtonCell();
+                giveBook.Value = "";
+                row.Cells.Add(giveBook);
+
+                DataGridViewButtonCell deleteUser = new DataGridViewButtonCell();
+                deleteUser.Value = "";
+                row.Cells.Add(deleteUser);
+
+                // Додаємо рядок з даними і кнопками в DataGridView
+                dg.Rows.Add(row);
+            }
+
+            // Додаємо обробник події для кнопки "Переглянути історію"
+            dg.CellContentClick += (sender, e) =>
+            {
+                // Обробка натискання на кнопку "Переглянути історію"
+                if (e.ColumnIndex == dg.Columns["button_show_history"].Index && e.RowIndex >= 0)
+                {
+                    // Отримати ідентифікатор користувача
+                    int userId = (int)dg.Rows[e.RowIndex].Cells["id"].Value;
+                }
+            };
+
+            // Додаємо обробник події для кнопки "Видати книгу"
+            dg.CellContentClick += (sender, e) =>
+            {
+                // Обробка натискання на кнопку "Видати книгу"
+                if (e.ColumnIndex == dg.Columns["button_give_book"].Index && e.RowIndex >= 0)
+                {
+                    // Отримати ідентифікатор користувача
+                    int userId = (int)dg.Rows[e.RowIndex].Cells["id"].Value;
+                }
+            };
+
+            // Додаємо обробник події для кнопки "Видалити користувача"
+            dg.CellContentClick += (sender, e) =>
+            {
+                // Обробка натискання на кнопку "Видалити користувача"
+                if (e.ColumnIndex == dg.Columns["button_delete_user"].Index && e.RowIndex >= 0)
+                {
+                    // Отримати ідентифікатор користувача
+                    int userId = (int)dg.Rows[e.RowIndex].Cells["id"].Value;
+                }
+            };
+
+            // Повертаємо змінений об'єкт DataGridView
+            return dg;
+        }
     }
 
 }

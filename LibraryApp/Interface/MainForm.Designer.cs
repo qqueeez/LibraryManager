@@ -52,6 +52,7 @@
             this.ButtonShowReaders.TabIndex = 4;
             this.ButtonShowReaders.Text = "Читачі";
             this.ButtonShowReaders.UseVisualStyleBackColor = true;
+            this.ButtonShowReaders.Click += new System.EventHandler(this.ButtonShowReaders_Click);
             // 
             // label1
             // 

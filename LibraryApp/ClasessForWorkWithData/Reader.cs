@@ -11,10 +11,8 @@ namespace ClasessForWorkWithData
     {
         // id читача
         public int Reader_ID { get; set; }
-        // Ім'я читача
-        public string Name { get; set; }
-        // Прізвище читача
-        public string Lastname { get; set; }
+        // Повне ім'я читача
+        public string Full_name { get; set; }
         // Адреса читача
         public string Address { get; set; }
         // Номер телефону читача
@@ -25,15 +23,22 @@ namespace ClasessForWorkWithData
         public List<string> ReadersBooks { get; set; }
 
         // конструктор для заповнення інформації про читача, а саме: ім'я, прізвище, адреса, номер телефону, електронна адреса, та історія оренд книг читача
-        public Reader(string name, string lastname, string address, string phoneNumber, string email, List<string> readerBooks)
+        public Reader(string full_name, string address, string phoneNumber, string email, List<string> readerBooks)
         {
-            Name = name;
-            Lastname = lastname;
+            Full_name = full_name;
             Address = address;
             PhoneNumber = phoneNumber;
             Email = email;
             ReadersBooks = readerBooks;
         }
-        
+
+        public Reader(string full_name, string address, string phoneNumber, string email)
+        {
+            Full_name = full_name;
+            Address = address;
+            PhoneNumber = phoneNumber;
+            Email = email;
+        }
+
     }
 }

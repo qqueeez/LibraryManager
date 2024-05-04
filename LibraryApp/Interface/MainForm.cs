@@ -25,5 +25,11 @@ namespace Interface
             BookForm form = new BookForm(library);
             form.ShowDialog();
         }
+
+        private void ButtonShowReaders_Click(object sender, EventArgs e)
+        {
+            ShowReadersForm form = new ShowReadersForm(library);
+            form.ShowDialog();
+        }
     }
 }
