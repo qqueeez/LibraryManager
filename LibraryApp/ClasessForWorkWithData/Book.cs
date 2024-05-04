@@ -27,11 +27,11 @@ namespace ClasessForWorkWithData
         // статус оренди книги 
         public string Rent_status { get; set; }
         // історія оренди книги читачами
-        public List<string> Rent_history { get; set; }
+        public List<RentHistory> Rent_history { get; set; } = new List<RentHistory>();
 
 
         // конструктор для заповнення назви книги, автору, жанру, року написання, статусу оренди та історії оренди
-        public Book(string title, string author, string genre, int year, string rent_status, List<string> rent_history)
+        public Book(string title, string author, string genre, int year, string rent_status, List<RentHistory> rent_history)
         {
             Title = title;
             Author = author;

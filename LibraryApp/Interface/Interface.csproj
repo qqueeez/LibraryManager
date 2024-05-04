@@ -65,6 +65,12 @@
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions.cs" />
+    <Compile Include="InfoAboutBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoAboutBookForm.Designer.cs">
+      <DependentUpon>InfoAboutBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoAboutBookForm.resx">
+      <DependentUpon>InfoAboutBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

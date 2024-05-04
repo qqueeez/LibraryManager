@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Interface
 {
@@ -56,6 +57,26 @@ namespace Interface
             AddCatalogForm form = new AddCatalogForm(library, id_RemovedSections);
             form.CatalogAdded += AddCatalogForm_BookAdded;
             form.ShowDialog();
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode selectedNode = e.Node;
+
+            var tag = selectedNode.Tag;
+
+            // Якщо натиснутий вузол - книга, відкрити можливість виконати функції над книгою
+            if (tag is int && (int)tag >= 10000)
+            {
+                InfoAboutBookForm form = new InfoAboutBookForm(library);
+                form.ShowDialog();
+            }
+
+            // Якщо натиснутий вузол - секція каталогу, відкрити можливість виконати функції над секцією каталогу
+            else if (tag is int && (int)tag < 10000)
+            {
+
+            }
         }
     }
 }
