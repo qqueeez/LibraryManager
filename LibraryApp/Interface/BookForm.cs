@@ -40,9 +40,17 @@ namespace Interface
 
         private void BookForm_Load(object sender, EventArgs e)
         {
-            CatalogSection newSection = new CatalogSection("Невизначені");
-            library.AddCatalogSection_In_Library(newSection, ref id_RemovedSections);
+            CatalogSection section = library.FindCatalogSection("Невизначені");
+
+            if (section == null)
+            {
+                CatalogSection newSection = new CatalogSection("Невизначені");
+                library.AddCatalogSection_In_Library(newSection, ref id_RemovedSections);
+                
+            }
+
             Functions.UpdateTreeView(library, ref treeView1);
+
         }
 
         private void buttonAddBook_Click(object sender, EventArgs e)
