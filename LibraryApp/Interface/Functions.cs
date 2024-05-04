@@ -103,6 +103,7 @@ namespace Interface
             return null;
         }
 
+        // Оновити дерево
         public static void UpdateTreeView(BookLibrary library, ref System.Windows.Forms.TreeView treeView)
         {
             AddCatalogsToTreeView(library, ref treeView);

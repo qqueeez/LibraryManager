@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ClasessForWorkWithData
 {
@@ -38,6 +39,16 @@ namespace ClasessForWorkWithData
             Year = year;
             Rent_status = rent_status;
             Rent_history = rent_history;
+        }
+
+        // конструктор для заповнення назви книги, автору, жанру, року написання та списку секцій 
+        public Book(string title, string author, string genre, int year, List<int> id_relatedSections)
+        {
+            Title = title;
+            Author = author;
+            Genre = genre;
+            Year = year;
+            IdRelatedSections = id_relatedSections;
         }
     }
 }

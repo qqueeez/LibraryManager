@@ -92,7 +92,7 @@ namespace ClasessForWorkWithData
         // Присвоїти id каталогу та додати секцію каталогу до бібліотеки
         public void AddCatalogSection_In_Library(CatalogSection sect, ref List<int> RemovedSections)
         {
-            int id = 1;
+            int id = 0;
 
             // Якщо ще не існує жодної секції каталогу
             if (catalog_section_list.Count == 0)
@@ -132,6 +132,13 @@ namespace ClasessForWorkWithData
             // Знайти id розташування секції каталогу з потрібним Catalog_ID у списку catalog_section_list
             int id = catalog_section_list.FindIndex(sect => sect.Catalog_ID == cat_id);
             catalog_section_list[id].CatalogTitle = newName;
+        }
+
+        // Знайти секцію каталогу за назвою
+        public CatalogSection FindCatalogSection(string title)
+        {
+            CatalogSection section = catalog_section_list.Find(s => s.CatalogTitle == title);
+            return section;
         }
 
         // ============================= ЧИТАЧІ ===============================

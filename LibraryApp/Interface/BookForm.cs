@@ -19,6 +19,12 @@ namespace Interface
         private List<int> RemovedSections = new List<int>();
         private List<int> RemovedBooks = new List<int>();
 
+        // Подія для того щоб оновлювати дерево коли користувач додасть книгу у формі AddBookForm
+        private void AddBookForm_BookAdded(object sender, EventArgs e)
+        {
+            Functions.UpdateTreeView(library, ref treeView1);
+        }
+
         public BookForm(BookLibrary library)
         {
             this.library = library;
@@ -30,6 +36,13 @@ namespace Interface
             CatalogSection newSection = new CatalogSection("Невизначені");
             library.AddCatalogSection_In_Library(newSection, ref RemovedSections);
             Functions.UpdateTreeView(library, ref treeView1);
+        }
+
+        private void buttonAddBook_Click(object sender, EventArgs e)
+        {
+            AddBookForm form = new AddBookForm(library);
+            form.BookAdded += AddBookForm_BookAdded;
+            form.ShowDialog();
         }
     }
 }

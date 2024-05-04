@@ -50,6 +50,7 @@
             this.buttonAddBook.TabIndex = 1;
             this.buttonAddBook.Text = "Додати книгу";
             this.buttonAddBook.UseVisualStyleBackColor = true;
+            this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
             // 
             // ButtonAddCatalog
             // 
