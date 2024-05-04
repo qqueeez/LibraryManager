@@ -115,6 +115,7 @@
             this.ButtonDeleteBook.TabIndex = 7;
             this.ButtonDeleteBook.Text = "Видалити книгу";
             this.ButtonDeleteBook.UseVisualStyleBackColor = true;
+            this.ButtonDeleteBook.Click += new System.EventHandler(this.ButtonDeleteBook_Click);
             // 
             // buttonSaveChanges
             // 

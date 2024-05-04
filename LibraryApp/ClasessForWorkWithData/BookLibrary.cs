@@ -69,10 +69,15 @@ namespace ClasessForWorkWithData
         }
 
         // Видалити книгу з бібліотеки
-        public void DeleteBook_In_Catalog(Book book)
+        public void DeleteBook_In_Catalog(int bookID)
         {
-            book_list.Remove(book);
+            Book bookToRemove = FindBookByID(bookID);
+            if (bookToRemove != null)
+            {
+                book_list.Remove(bookToRemove);
+            }
         }
+
 
         // Редагувати книгу. На вхід подається вже змінений об'єкт book
         public void EditBook_In_Catalog(Book book)
@@ -86,6 +91,19 @@ namespace ClasessForWorkWithData
                 }
             }
         }
+
+        public Book FindBookByID(int bookID)
+        {
+            foreach (Book book in book_list)
+            {
+                if (book.Book_ID == bookID)
+                {
+                    return book;
+                }
+            }
+            return null; // Возвращаем null, если книга с указанным ID не найдена
+        }
+
 
         // ============================= КАТАЛОГИ ===============================
 
@@ -188,10 +206,26 @@ namespace ClasessForWorkWithData
         }
 
         // Видалити читача з бібліотеки
-        public void DeleteReader(Reader reader)
+        public void DeleteReader(int userID)
         {
-            reader_list.Remove(reader);
+            // Находим читателя по userID
+            Reader readerToRemove = null;
+            foreach (Reader reader in reader_list)
+            {
+                if (reader.Reader_ID == userID)
+                {
+                    readerToRemove = reader;
+                    break;
+                }
+            }
+
+            // Если читатель найден, удаляем его из списка
+            if (readerToRemove != null)
+            {
+                reader_list.Remove(readerToRemove);
+            }
         }
+
 
 
 

@@ -20,6 +20,7 @@ namespace Interface
 
         private void AddReaderForm_ReaderAdded(object sender, EventArgs e)
         {
+            dataGridView1 = Functions.DisplayInfoAboutReadersInDataGrid(library.reader_list, library, dataGridView1);
             dataGridView1 = Functions.DisplayInfoAboutReadersInDataGrid(library.reader_list, dataGridView1, library);
         }
 
@@ -32,7 +33,7 @@ namespace Interface
         private void ShowReadersForm_Load(object sender, EventArgs e)
         {
             if (library.reader_list.Count > 0)
-                dataGridView1 = Functions.DisplayInfoAboutReadersInDataGrid(library.reader_list, dataGridView1, library);
+                dataGridView1 = Functions.DisplayInfoAboutReadersInDataGrid(library.reader_list, library, dataGridView1);
         }
 
         private void buttonSaveChanges_Click(object sender, EventArgs e)

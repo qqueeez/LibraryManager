@@ -22,6 +22,8 @@ namespace Interface
 
         public event EventHandler BookAdded;
 
+        
+
 
         protected virtual void OnBookAdded()
         {
