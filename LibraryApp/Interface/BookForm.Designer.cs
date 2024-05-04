@@ -30,7 +30,7 @@
         {
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.buttonAddBook = new System.Windows.Forms.Button();
-            this.ButtonAddCatalog = new System.Windows.Forms.Button();
+            this.buttonAddCatalog = new System.Windows.Forms.Button();
             this.ButtonSearchBook = new System.Windows.Forms.Button();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -52,14 +52,15 @@
             this.buttonAddBook.UseVisualStyleBackColor = true;
             this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
             // 
-            // ButtonAddCatalog
+            // buttonAddCatalog
             // 
-            this.ButtonAddCatalog.Location = new System.Drawing.Point(13, 41);
-            this.ButtonAddCatalog.Name = "ButtonAddCatalog";
-            this.ButtonAddCatalog.Size = new System.Drawing.Size(305, 23);
-            this.ButtonAddCatalog.TabIndex = 2;
-            this.ButtonAddCatalog.Text = "Додати секцію каталогу";
-            this.ButtonAddCatalog.UseVisualStyleBackColor = true;
+            this.buttonAddCatalog.Location = new System.Drawing.Point(13, 41);
+            this.buttonAddCatalog.Name = "buttonAddCatalog";
+            this.buttonAddCatalog.Size = new System.Drawing.Size(305, 23);
+            this.buttonAddCatalog.TabIndex = 2;
+            this.buttonAddCatalog.Text = "Додати секцію каталогу";
+            this.buttonAddCatalog.UseVisualStyleBackColor = true;
+            this.buttonAddCatalog.Click += new System.EventHandler(this.buttonAddCatalog_Click);
             // 
             // ButtonSearchBook
             // 
@@ -85,7 +86,7 @@
             this.ClientSize = new System.Drawing.Size(330, 493);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.ButtonSearchBook);
-            this.Controls.Add(this.ButtonAddCatalog);
+            this.Controls.Add(this.buttonAddCatalog);
             this.Controls.Add(this.buttonAddBook);
             this.Controls.Add(this.treeView1);
             this.Name = "BookForm";
@@ -100,7 +101,7 @@
 
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button buttonAddBook;
-        private System.Windows.Forms.Button ButtonAddCatalog;
+        private System.Windows.Forms.Button buttonAddCatalog;
         private System.Windows.Forms.Button ButtonSearchBook;
         private System.Windows.Forms.TextBox SearchTextBox;
     }

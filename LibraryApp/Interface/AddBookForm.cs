@@ -18,7 +18,7 @@ namespace Interface
 
         private List<int> id_SelectedSections { get; set; } = new List<int>();
 
-        private List<int> id_RemovedBooks = new List<int>();
+        private List<int> id_RemovedBooks;
 
         public event EventHandler BookAdded;
 
@@ -33,9 +33,10 @@ namespace Interface
             }
         }
 
-        public AddBookForm(BookLibrary library)
+        public AddBookForm(BookLibrary library, List<int> id_RemovedBooks)
         {
             this.library = library;
+            this.id_RemovedBooks = id_RemovedBooks;
             InitializeComponent();
         }
 
