@@ -136,6 +136,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddReaderForm";
             this.Text = "AddReaderForm";
+            this.Load += new System.EventHandler(this.AddReaderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -20,16 +20,16 @@ namespace ClasessForWorkWithData
         // Електронна адреса читача
         public string Email { get; set; }
         // Інформація про активність читача в бібліотеці (дата початку та закінчення оренди та назва книги)
-        public List<string> ReadersBooks { get; set; }
+        public List<RentHistory> Rent_history { get; set; } = new List<RentHistory>();
 
         // конструктор для заповнення інформації про читача, а саме: ім'я, прізвище, адреса, номер телефону, електронна адреса, та історія оренд книг читача
-        public Reader(string full_name, string address, string phoneNumber, string email, List<string> readerBooks)
+        public Reader(string full_name, string address, string phoneNumber, string email, List<RentHistory> rentHistory)
         {
             Full_name = full_name;
             Address = address;
             PhoneNumber = phoneNumber;
             Email = email;
-            ReadersBooks = readerBooks;
+            Rent_history = rentHistory;
         }
 
         public Reader(string full_name, string address, string phoneNumber, string email)

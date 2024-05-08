@@ -36,6 +36,7 @@ namespace Interface
             this.library = library;
             InitializeComponent();
             this.id_RemovedSections = id_RemovedSections;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void ButtonSaveCatalog_Click(object sender, EventArgs e)
@@ -81,6 +82,14 @@ namespace Interface
                 // Закрити форму
                 this.Close();
             }
+        }
+
+        private void AddCatalogForm_Load(object sender, EventArgs e)
+        {
+            // Заборонити зміну розміру вікна
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            // Заборонити розгортання на весь екран
+            this.MaximizeBox = false;
         }
     }
 }

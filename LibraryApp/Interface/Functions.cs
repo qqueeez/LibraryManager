@@ -113,51 +113,54 @@ namespace Interface
         }
 
         // Відобразити історію оренди в DataGridView
-        public static void AddInfoInDataGridView(BookLibrary library, ref DataGridView dg)
+        public static void AddInfoInDataGridView(BookLibrary library, ref DataGridView dg, int selectedBookId)
         {
+            // Додаємо стовпці до DataGridView
+            dg.Columns.Add("id", "Номер запису");
+            dg.Columns.Add("full_client_name", "Клієнт");
+            dg.Columns.Add("client_number", "Номер телефону");
+            dg.Columns.Add("startDate_period", "Дата початку оренди");
+            dg.Columns.Add("endDate_period", "Дата закінчення оренди");
+
+            // Проходимося по кожному елементу у бібліотеці книг
             foreach (var item in library)
             {
-                if (item is Book book)
+                // Перевіряємо, чи елемент є книгою та чи у неї є історія оренди, а також потрібно показати історію оренди тільки вибраної книги
+                if (item is Book book && book.Book_ID == selectedBookId && book.Rent_history != null && book.Rent_history.Count > 0)
                 {
-                    if (book.Rent_history != null && book.Rent_history.Count > 0)
+                    // Проходимося по кожному запису історії оренди книги
+                    foreach (var rentRecord in book.Rent_history)
                     {
-                        // Якщо історія оренди не є порожньою, додати записи історії оренди книги в DataGridView
-                        foreach (var rentRecord in book.Rent_history)
-                        {
-                            // Створити новий рядок для DataGridView
-                            DataGridViewRow row = new DataGridViewRow();
-
-                            // Створити ячейку для ідентифікатора та встановити її значення з історії оренди
-                            DataGridViewCell idCell = new DataGridViewTextBoxCell();
-                            idCell.Value = rentRecord.Id;
-                            row.Cells.Add(idCell);
-
-                            // Створити ячейку для повного імені клієнта та встановити її значення з історії оренди
-                            DataGridViewCell full_client_nameCell = new DataGridViewTextBoxCell();
-                            full_client_nameCell.Value = rentRecord.Reader_full_name;
-                            row.Cells.Add(full_client_nameCell);
-
-                            // Створити ячейку для номеру клієнта та встановити її значення з історії оренди
-                            DataGridViewCell client_numberCell = new DataGridViewTextBoxCell();
-                            client_numberCell.Value = rentRecord.Reader_phone_number;
-                            row.Cells.Add(client_numberCell);
-
-                            // Створити ячейку для періоду оренди та встановити її значення з історії оренди
-                            DataGridViewCell rent_periodCell = new DataGridViewTextBoxCell();
-                            rent_periodCell.Value = rentRecord.Rent_period;
-                            row.Cells.Add(rent_periodCell);
-
-                            // Додати рядок у DataGridView
-                            dg.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        // Якщо історія оренди відсутня, додати порожній рядок або іншу інформацію
+                        // Створюємо новий рядок для DataGridView
                         DataGridViewRow row = new DataGridViewRow();
-                        DataGridViewCell emptyCell = new DataGridViewTextBoxCell();
-                        emptyCell.Value = "Історія оренди відсутня";
-                        row.Cells.Add(emptyCell);
+
+                        // Створюємо ячейку для номеру запису та встановлюємо її значення з історії оренди
+                        DataGridViewCell idCell = new DataGridViewTextBoxCell();
+                        idCell.Value = rentRecord.Record_id;
+                        row.Cells.Add(idCell);
+
+                        // Створюємо ячейку для повного імені клієнта та встановлюємо її значення з історії оренди
+                        DataGridViewCell full_client_nameCell = new DataGridViewTextBoxCell();
+                        Reader reader = library.FindReader(rentRecord.User_id);
+                        full_client_nameCell.Value = reader.Full_name;
+                        row.Cells.Add(full_client_nameCell);
+
+                        // Створюємо ячейку для номеру телефону клієнта та встановлюємо її значення з історії оренди
+                        DataGridViewCell client_numberCell = new DataGridViewTextBoxCell();
+                        client_numberCell.Value = reader.PhoneNumber;
+                        row.Cells.Add(client_numberCell);
+
+                        // Створюємо ячейку для дати початку оренди та встановлюємо її значення з історії оренди
+                        DataGridViewCell rent_startDateCell = new DataGridViewTextBoxCell();
+                        rent_startDateCell.Value = rentRecord.startDate;
+                        row.Cells.Add(rent_startDateCell);
+
+                        // Створюємо ячейку для дати кінця оренди та встановлюємо її значення з історії оренди
+                        DataGridViewCell rent_endDateCell = new DataGridViewTextBoxCell();
+                        rent_endDateCell.Value = rentRecord.endDate;
+                        row.Cells.Add(rent_endDateCell);
+
+                        // Додаємо рядок у DataGridView
                         dg.Rows.Add(row);
                     }
                 }
@@ -165,7 +168,6 @@ namespace Interface
         }
 
         public static DataGridView DisplayInfoAboutReadersInDataGrid(List<Reader> users, BookLibrary library, DataGridView dg)
-        public static DataGridView DisplayInfoAboutReadersInDataGrid(List<Reader> users, DataGridView dg, BookLibrary library)
         {
             // Очищуємо всі стовпці перед додаванням нових
             dg.Columns.Clear();
@@ -237,7 +239,7 @@ namespace Interface
                     // Отримати ідентифікатор користувача
                     int userId = (int)dg.Rows[e.RowIndex].Cells["id"].Value;
 
-                    GiveBookForm form = new GiveBookForm(library);
+                    GiveBookForm form = new GiveBookForm(library, userId);
                     form.ShowDialog();
                 }
             };

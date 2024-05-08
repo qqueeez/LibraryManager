@@ -34,6 +34,7 @@ namespace Interface
             this.library = library;
             this.id_RemovedReaders = id_RemovedReaders;
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void buttonSaveReader_Click(object sender, EventArgs e)
@@ -122,6 +123,14 @@ namespace Interface
             {
                 return false;
             }
+        }
+
+        private void AddReaderForm_Load(object sender, EventArgs e)
+        {
+            // Заборонити зміну розміру вікна
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            // Заборонити розгортання на весь екран
+            this.MaximizeBox = false;
         }
 
         // Метод для перевірки коректності номеру телефону

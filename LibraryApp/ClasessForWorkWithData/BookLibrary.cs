@@ -92,16 +92,18 @@ namespace ClasessForWorkWithData
             }
         }
 
+        // Знайти книгу по id
         public Book FindBookByID(int bookID)
         {
-            foreach (Book book in book_list)
-            {
-                if (book.Book_ID == bookID)
-                {
-                    return book;
-                }
-            }
-            return null; // Возвращаем null, если книга с указанным ID не найдена
+            Book book = book_list.Find(b => b.Book_ID == bookID);
+            return book;
+        }
+
+        // Знайти книгу за назвою
+        public Book FindBookByTitle(string book_title)
+        {
+            Book book = book_list.Find(b => b.Title == book_title);
+            return book;
         }
 
 
@@ -208,28 +210,32 @@ namespace ClasessForWorkWithData
         // Видалити читача з бібліотеки
         public void DeleteReader(int userID)
         {
-            // Находим читателя по userID
-            Reader readerToRemove = null;
-            foreach (Reader reader in reader_list)
-            {
-                if (reader.Reader_ID == userID)
-                {
-                    readerToRemove = reader;
-                    break;
-                }
-            }
+            Reader reader = FindReader(userID);
 
-            // Если читатель найден, удаляем его из списка
-            if (readerToRemove != null)
-            {
-                reader_list.Remove(readerToRemove);
-            }
+            reader_list.Remove(reader);
         }
 
+        // Знайти читача по ID
+        public Reader FindReader(int id)
+        {
+            Reader reader = reader_list.Find(r => r.Reader_ID == id);
+            return reader;
+        }
 
+        // видача книги читачу та змінення статусу книги на "в оренді",
+        // а також занесення в історію книги та читача запису про оренду книги
+        public void Give_Book(List<RentHistory> operations_list)
+        {
+            foreach (RentHistory operation in operations_list)
+            {
+                Book book = FindBookByID(operation.Book_id);
+                Reader reader = FindReader(operation.User_id);
 
-
-
+                book.isFree = false;
+                book.Rent_history.Add(operation);
+                reader.Rent_history.Add(operation);
+            }
+        }
 
 
         // Знайти каталог за його id
@@ -257,14 +263,6 @@ namespace ClasessForWorkWithData
         //{
 
         //}
-
-
-
-        // видача книги читачу та змінення статусу книги на "в оренді", а також занесення в історію книги та читача запису про оренду книги
-        public void Give_Book(Book book)
-        {
-
-        }
 
         // Повернення книги читачем та змінення статусу книги, а також додавання в історію книги та читача дати повернення 
         public void Return_Book(Book book)

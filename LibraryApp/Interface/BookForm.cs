@@ -42,11 +42,16 @@ namespace Interface
         {
             this.library = library;
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void BookForm_Load(object sender, EventArgs e)
         {
             CatalogSection section = library.FindCatalogSection("Невизначені");
+            // Заборонити зміну розміру вікна
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            // Заборонити розгортання на весь екран
+            this.MaximizeBox = false;
 
             if (section == null)
             {

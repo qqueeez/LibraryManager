@@ -25,19 +25,19 @@ namespace ClasessForWorkWithData
         // Рік написання
         public int Year { get; set; }
         // статус оренди книги 
-        public string Rent_status { get; set; }
+        public bool isFree{ get; set; }
         // історія оренди книги читачами
         public List<RentHistory> Rent_history { get; set; } = new List<RentHistory>();
 
 
         // конструктор для заповнення назви книги, автору, жанру, року написання, статусу оренди та історії оренди
-        public Book(string title, string author, string genre, int year, string rent_status, List<RentHistory> rent_history)
+        public Book(string title, string author, string genre, int year, bool is_Free, List<RentHistory> rent_history)
         {
             Title = title;
             Author = author;
             Genre = genre;
             Year = year;
-            Rent_status = rent_status;
+            isFree = is_Free;
             Rent_history = rent_history;
         }
 

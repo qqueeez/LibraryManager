@@ -76,6 +76,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddCatalogForm";
             this.Text = "AddCatalogForm";
+            this.Load += new System.EventHandler(this.AddCatalogForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -16,6 +16,7 @@ namespace Interface
         public MainForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         BookLibrary library = new BookLibrary();
@@ -30,6 +31,14 @@ namespace Interface
         {
             ShowReadersForm form = new ShowReadersForm(library);
             form.ShowDialog();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // Заборонити зміну розміру вікна
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            // Заборонити розгортання на весь екран
+            this.MaximizeBox = false;
         }
     }
 }

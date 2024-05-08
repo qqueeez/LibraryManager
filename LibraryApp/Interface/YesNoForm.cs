@@ -18,6 +18,7 @@ namespace Interface
         {
             this.value = infoToDisplay;
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void YesNoForm_Load(object sender, EventArgs e)

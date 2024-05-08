@@ -40,12 +40,18 @@ namespace Interface
             this.library = library;
             this.id_RemovedBooks = id_RemovedBooks;
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void AddBookForm_Load(object sender, EventArgs e)
         {
             // Очистити елемент 
             checkedListBox1.Items.Clear();
+
+            // Заборонити зміну розміру вікна
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            // Заборонити розгортання на весь екран
+            this.MaximizeBox = false;
 
             foreach (var section in library.catalog_section_list)
             {

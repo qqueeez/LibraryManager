@@ -9,12 +9,15 @@ namespace ClasessForWorkWithData
     public class RentHistory
     {
         // Ідентифікатор запису
-        public int Id { get; set; }
-        // Повне ім'я читача
-        public string Reader_full_name { get; set; }
-        // Номер телефону
-        public string Reader_phone_number { get; set; }
-        // Період оренди книги
-        public string Rent_period { get; set; }
+        public int Record_id { get; set; }
+        // Ідентифікатор читача
+        public int User_id { get; set; }
+        // Ідентифікатор книги
+        public int Book_id { get; set; }
+        // Початок оренди
+        public DateTime startDate { get; set; }
+        // Кінець оренди
+        public DateTime endDate { get; set; }
+
     }
 }

@@ -28,24 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonSaveAndExit = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 42);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(192, 229);
-            this.checkedListBox1.TabIndex = 0;
             // 
             // dateTimePicker1
             // 
@@ -87,23 +79,25 @@
             this.textBox1.Size = new System.Drawing.Size(286, 86);
             this.textBox1.TabIndex = 5;
             // 
-            // button1
+            // buttonSave
             // 
-            this.button1.Location = new System.Drawing.Point(263, 248);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Зберегти";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(263, 248);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(120, 23);
+            this.buttonSave.TabIndex = 6;
+            this.buttonSave.Text = "Зберегти";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // button2
+            // buttonSaveAndExit
             // 
-            this.button2.Location = new System.Drawing.Point(401, 248);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Зберегти і вийти";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonSaveAndExit.Location = new System.Drawing.Point(401, 248);
+            this.buttonSaveAndExit.Name = "buttonSaveAndExit";
+            this.buttonSaveAndExit.Size = new System.Drawing.Size(120, 23);
+            this.buttonSaveAndExit.TabIndex = 7;
+            this.buttonSaveAndExit.Text = "Зберегти і вийти";
+            this.buttonSaveAndExit.UseVisualStyleBackColor = true;
+            this.buttonSaveAndExit.Click += new System.EventHandler(this.buttonSaveAndExit_Click);
             // 
             // label3
             // 
@@ -114,37 +108,45 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Список книг";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 44);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(205, 225);
+            this.listBox1.TabIndex = 9;
+            // 
             // GiveBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 286);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSaveAndExit);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.checkedListBox1);
             this.Name = "GiveBookForm";
             this.Text = "GiveBookForm";
+            this.Load += new System.EventHandler(this.GiveBookForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonSaveAndExit;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

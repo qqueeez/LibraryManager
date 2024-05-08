@@ -34,14 +34,15 @@ namespace Interface
             Book_ID = book_ID;
             InitializeComponent();
             FillBookInfo(book_ID);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void FillBookInfo(int bookID)
         {
-            // Находим книгу по её ID
+            // Знайти книгу по id
             Book book = library.FindBookByID(bookID);
 
-            // Если книга найдена, заполняем текстовые поля информацией о книге
+            // Якщо книгу знайдено вивести інформацію
             if (book != null)
             {
                 textBox1.Text = book.Title;
@@ -51,20 +52,22 @@ namespace Interface
             }
             else
             {
-                // Если книга не найдена, выводим сообщение
-                MessageBox.Show("Книга не найдена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close(); // Закрываем форму, так как информацию о книге не удалось заполнить
+                // Якщо книга не знайдена
+                MessageBox.Show("Книгу не знайдено", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Закрити форму
+                this.Close();
             }
         }
 
 
         private void InfoAboutBookForm_Load(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Add("id", "Номер запису");
-            dataGridView1.Columns.Add("full_client_name", "Клієнт");
-            dataGridView1.Columns.Add("client_number", "Номер телефону");
-            dataGridView1.Columns.Add("rent_period", "Період оренди");
-            Functions.AddInfoInDataGridView(library, ref dataGridView1);
+            // Заборонити зміну розміру вікна
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            // Заборонити розгортання на весь екран
+            this.MaximizeBox = false;
+
+            Functions.AddInfoInDataGridView(library, ref dataGridView1, Book_ID);
         }
 
         private void ButtonDeleteBook_Click(object sender, EventArgs e)

@@ -36,7 +36,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 29);
+            this.label1.Location = new System.Drawing.Point(111, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             // buttonYes
             // 
-            this.buttonYes.Location = new System.Drawing.Point(12, 59);
+            this.buttonYes.Location = new System.Drawing.Point(12, 116);
             this.buttonYes.Name = "buttonYes";
             this.buttonYes.Size = new System.Drawing.Size(75, 23);
             this.buttonYes.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             // ButtonNo
             // 
-            this.ButtonNo.Location = new System.Drawing.Point(141, 59);
+            this.ButtonNo.Location = new System.Drawing.Point(220, 116);
             this.ButtonNo.Name = "ButtonNo";
             this.ButtonNo.Size = new System.Drawing.Size(75, 23);
             this.ButtonNo.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(228, 96);
+            this.ClientSize = new System.Drawing.Size(307, 151);
             this.Controls.Add(this.ButtonNo);
             this.Controls.Add(this.buttonYes);
             this.Controls.Add(this.label1);
