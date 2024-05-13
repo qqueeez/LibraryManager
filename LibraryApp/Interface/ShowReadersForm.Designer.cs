@@ -44,7 +44,7 @@
             // 
             // buttonAddReader
             // 
-            this.buttonAddReader.Location = new System.Drawing.Point(926, 200);
+            this.buttonAddReader.Location = new System.Drawing.Point(926, 201);
             this.buttonAddReader.Name = "buttonAddReader";
             this.buttonAddReader.Size = new System.Drawing.Size(122, 23);
             this.buttonAddReader.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             // buttonSaveChanges
             // 
-            this.buttonSaveChanges.Location = new System.Drawing.Point(1054, 200);
+            this.buttonSaveChanges.Location = new System.Drawing.Point(1054, 201);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
             this.buttonSaveChanges.Size = new System.Drawing.Size(107, 23);
             this.buttonSaveChanges.TabIndex = 2;

@@ -52,5 +52,10 @@ namespace Interface
             form.ReaderAdded += AddReaderForm_ReaderAdded;
             form.ShowDialog();
         }
+
+        private void editReader_Click_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

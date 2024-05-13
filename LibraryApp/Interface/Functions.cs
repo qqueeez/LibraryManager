@@ -187,7 +187,9 @@ namespace Interface
             dg.Columns.Add("client_phone", "Номер телефону");
             dg.Columns.Add("button_show_history", "Переглянути історію оренди"); // Кнопка для перегляду історії оренди
             dg.Columns.Add("button_give_book", "Видати книгу");   // Кнопка для видачі книги
+            dg.Columns.Add("button_edit_user", "Редагувати читача"); // edit user 
             dg.Columns.Add("button_delete_user", "Видалити читача"); // Кнопка для видалення користувача
+            
 
             foreach (DataGridViewColumn column in dg.Columns)
             {
@@ -217,6 +219,10 @@ namespace Interface
                 DataGridViewButtonCell giveBook = new DataGridViewButtonCell();
                 giveBook.Value = "";
                 row.Cells.Add(giveBook);
+
+                DataGridViewButtonCell editReader = new DataGridViewButtonCell();
+                editReader.Value = "";
+                row.Cells.Add(editReader);
 
                 DataGridViewButtonCell deleteUser = new DataGridViewButtonCell();
                 deleteUser.Value = "";
@@ -248,6 +254,20 @@ namespace Interface
 
                     GiveBookForm form = new GiveBookForm(library, userId);
                     form.ShowDialog();
+                }
+            };
+
+            dg.CellContentClick += (sender, e) =>
+            {
+                if (e.ColumnIndex == dg.Columns["button_edit_user"].Index && e.RowIndex >= 0)
+                {
+                    // Отримати ідентифікатор користувача
+                    int userId = (int)dg.Rows[e.RowIndex].Cells["id"].Value;
+                    EditReader editReader = new EditReader(library, userId);
+                    editReader.ShowDialog();
+
+                    // Обновляем DataGridView с информацией о читателях
+                    DisplayInfoAboutReadersInDataGrid(users, library, dg);
                 }
             };
 

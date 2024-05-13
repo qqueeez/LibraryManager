@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -87,11 +88,11 @@ namespace Interface
             // Перевірка коректності введеного номеру телефону 
             if (!string.IsNullOrWhiteSpace(textBox4.Text))
             {
-                //if (!IsValidPhoneNumber(textBox4.Text))
-                //{
-                //    errorProvider1.SetError(textBox4, "Введіть коректний номер телефону");
-                //    return;
-                //}
+                if (!IsValidPhoneNumber(textBox4.Text))
+                {
+                    errorProvider1.SetError(textBox4, "Введіть коректний номер телефону");
+                    return;
+                }
                 readerPhoneNumber = textBox4.Text;
             }
 
@@ -134,10 +135,21 @@ namespace Interface
         }
 
         // Метод для перевірки коректності номеру телефону
-        //private bool IsValidPhoneNumber(string phoneNumber)
-        //{
-        //    
-        //    
-        //}
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+
+                // Проверяем, соответствует ли введенный текст формату украинского номера телефона
+                if (!Regex.IsMatch(phoneNumber, @"^(\+380)?\d{9}$"))
+                {
+                    errorProvider1.SetError(textBox4, "Невірний формат");
+                    return false;
+                }
+                else 
+                {
+                    return true;
+                }
+ 
+
+        }
     }
 }
