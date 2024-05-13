@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -141,9 +142,13 @@ namespace ClasessForWorkWithData
         }
 
         // Видалити секцію каталогу з бібліотеки
-        public void DeleteCatalog_In_Library(CatalogSection catalog)
+        public void DeleteCatalog_In_Library(int Catalog_ID)
         {
-            catalog_section_list.Remove(catalog);
+            CatalogSection CatalogToRemove = FindCatalogSection(Catalog_ID);
+            if (CatalogToRemove != null)
+            {
+                catalog_section_list.Remove(CatalogToRemove);
+            }
         }
 
         // Редагувати назву каталогу
@@ -158,6 +163,13 @@ namespace ClasessForWorkWithData
         public CatalogSection FindCatalogSection(string title)
         {
             CatalogSection section = catalog_section_list.Find(s => s.CatalogTitle == title);
+            return section;
+        }
+
+        // Знайти секцію каталогу за id
+        public CatalogSection FindCatalogSection(int id)
+        {
+            CatalogSection section = catalog_section_list.Find(s => s.Catalog_ID == id);
             return section;
         }
 
@@ -238,12 +250,7 @@ namespace ClasessForWorkWithData
         }
 
 
-        // Знайти каталог за його id
-        public CatalogSection FindCatalogSection(int id)
-        {
-            CatalogSection section = catalog_section_list.Find(s => s.Catalog_ID == id);
-            return section;
-        }
+
 
         // Знайти книгу у бібліотеці
         //public Book FindBook_In_Library(int id)

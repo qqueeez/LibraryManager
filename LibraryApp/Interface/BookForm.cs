@@ -20,20 +20,26 @@ namespace Interface
         private List<int> id_RemovedSections = new List<int>();
         private List<int> id_RemovedBooks = new List<int>();
 
-        // Подія для того щоб оновлювати дерево коли користувач додасть книгу у формі AddBookForm
+        // Подія для того щоб оновлювати дерево коли користувач додасть книгу 
         private void AddBookForm_BookAdded(object sender, EventArgs e)
         {
             Functions.UpdateTreeView(library, ref treeView1);
         }
 
-        // Подія для того щоб оновлювати дерево коли користувач додасть каталог у формі AddCatalogForm
-        private void AddCatalogForm_BookAdded(object sender, EventArgs e)
+        // Подія для того щоб оновлювати дерево коли користувач додасть каталог 
+        private void AddCatalogForm_CatalogAdded(object sender, EventArgs e)
         {
             Functions.UpdateTreeView(library, ref treeView1);
         }
 
-        //Podiya
-        private void DeleteBookForm_BookDeleted(object sender, EventArgs e)
+        //Подія для того щоб оновлювати дерево коли користувач видалить книгу 
+        private void InfoAboutBookForm_BookDeleted(object sender, EventArgs e)
+        {
+            Functions.UpdateTreeView(library, ref treeView1);
+        }
+
+        // Подія для того щоб оновлювати дерево коли користувач видалить каталог
+        private void EditCatalogForm_CatalogDeleted(object sender, EventArgs e)
         {
             Functions.UpdateTreeView(library, ref treeView1);
         }
@@ -74,7 +80,7 @@ namespace Interface
         private void buttonAddCatalog_Click(object sender, EventArgs e)
         {
             AddCatalogForm form = new AddCatalogForm(library, id_RemovedSections);
-            form.CatalogAdded += AddCatalogForm_BookAdded;
+            form.CatalogAdded += AddCatalogForm_CatalogAdded;
             form.ShowDialog();
         }
 
@@ -83,20 +89,22 @@ namespace Interface
             TreeNode selectedNode = e.Node;
 
             var tag = selectedNode.Tag;
-            int book_ID = Convert.ToInt32(tag.ToString());
+            int ID = Convert.ToInt32(tag.ToString());
 
             // Якщо натиснутий вузол - книга, відкрити можливість виконати функції над книгою
             if (tag is int && (int)tag >= 10000)
             {
-                InfoAboutBookForm form = new InfoAboutBookForm(library, book_ID);
-                form.BookDeleted += DeleteBookForm_BookDeleted;
+                InfoAboutBookForm form = new InfoAboutBookForm(library, ID);
+                form.BookDeleted += InfoAboutBookForm_BookDeleted;
                 form.ShowDialog();
             }
 
             // Якщо натиснутий вузол - секція каталогу, відкрити можливість виконати функції над секцією каталогу
             else if (tag is int && (int)tag < 10000)
             {
-
+                EditCatalogForm form = new EditCatalogForm(library, ID);
+                form.CatalogDeleted += EditCatalogForm_CatalogDeleted;
+                form.ShowDialog();
             }
         }
     }
