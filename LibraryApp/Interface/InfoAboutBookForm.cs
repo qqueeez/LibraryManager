@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Interface
 {
@@ -18,6 +20,8 @@ namespace Interface
 
         public event EventHandler BookDeleted;
 
+        public event EventHandler BookTitleEdit;
+
         protected virtual void OnBookDeleted()
         {
             // Перевірка чи є підписники на подію
@@ -25,6 +29,16 @@ namespace Interface
             {
                 // Виклик події
                 BookDeleted(this, EventArgs.Empty);
+            }
+        }
+
+        protected virtual void OnBookTitleEdit()
+        {
+            // Перевірка чи є підписники на подію
+            if (BookTitleEdit != null)
+            {
+                // Виклик події
+                BookTitleEdit(this, EventArgs.Empty);
             }
         }
 
@@ -49,6 +63,13 @@ namespace Interface
                 textBox2.Text = book.Author;
                 textBox3.Text = book.Genre;
                 textBox4.Text = book.Year.ToString();
+                if (book.isFree == true)
+                    textBox5.Text = "Вільна";
+                else
+                {
+                    textBox5.Text = "Зайнята";
+                }
+
             }
             else
             {
@@ -74,6 +95,82 @@ namespace Interface
         {
             library.DeleteBook_In_Catalog(Book_ID);
             OnBookDeleted();
+            this.Close();
+        }
+
+        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        {
+            Book book = library.FindBookByID(Book_ID);
+
+            // Якщо були якість зміни значень полів книги
+            if (textBox1.Text != book.Title || textBox2.Text != book.Author || textBox3.Text != book.Genre || textBox4.Text != book.Year.ToString())
+            {
+                string infoToDisplay = "Зберегти зміни?";
+                YesNoForm choice = new YesNoForm(infoToDisplay);
+                DialogResult result = choice.ShowDialog();
+
+
+                if (result == DialogResult.Yes)
+                {
+                    int mark;
+
+                    // Перевірка зміни значення textBox1.Text - Назва книги
+                    if (textBox1.Text != book.Title)
+                    {
+                        // Якщо вміст елемента textbox - пустий рядок або пробіл
+                        if (string.IsNullOrWhiteSpace(textBox1.Text))
+                        {
+                            errorProvider1.SetError(textBox1, "Невірний формат");
+                            return;
+                        }
+                        else
+                        {
+                            book.Title = textBox1.Text;
+                            errorProvider1.SetError(textBox1, "");
+                            OnBookTitleEdit();
+                        }
+                    }
+
+                    // Перевірка зміни значення textBox4.Text - Рік написання книги
+                    if (Convert.ToInt32(textBox4.Text) != book.Year)
+                    {
+                        // Якщо вміст елемента textbox - пустий рядок або будь який інший символ окрім цифри
+                        if (!int.TryParse(textBox4.Text, out mark) || textBox4.Text == string.Empty)
+                        {
+                            errorProvider1.SetError(textBox4, "Невірний формат");
+                            return;
+                        }
+                        else if (textBox4.Text != string.Empty)
+                        {
+                            book.Year = int.Parse(textBox4.Text);
+                            errorProvider1.SetError(textBox4, "");
+                        }
+                    }
+
+                    // Перевірка зміни значення textBox2.Text - Автор
+                    if (textBox2.Text != book.Author)
+                    {
+                        // Якщо вміст елемента textbox - не пустий рядок або пробіл
+                        if (!string.IsNullOrWhiteSpace(textBox2.Text))
+                        {
+                            book.Author = textBox2.Text;
+                        }
+                    }
+
+                    // Перевірка зміни значення textBox1.Text - Назва книги
+                    if (textBox3.Text != book.Genre)
+                    {
+                        // Якщо вміст елемента textbox - не пустий рядок або пробіл
+                        if (!string.IsNullOrWhiteSpace(textBox3.Text))
+                        {
+                            book.Genre = textBox3.Text;
+                        }
+                    }
+
+                    // Редагувати книгу
+                    library.EditBook_In_Catalog(book);
+                }
+            }
             this.Close();
         }
     }

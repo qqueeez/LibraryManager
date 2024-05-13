@@ -75,6 +75,7 @@ namespace Interface
                 string BookTitle = "Невизначена";
                 string BookAuthor = "Невизначений";
                 string BookGenre = "Невизначений";
+                bool isFree = true;
                 int BookYear = 0;
 
 
@@ -140,7 +141,7 @@ namespace Interface
                 }
 
 
-                Book newBook = new Book(BookTitle, BookAuthor, BookGenre, BookYear, id_SelectedSections);
+                Book newBook = new Book(BookTitle, BookAuthor, BookGenre, BookYear, isFree, id_SelectedSections);
 
 
                 // Додати книгу до бібліотеки

@@ -31,14 +31,14 @@ namespace ClasessForWorkWithData
 
 
         // конструктор для заповнення назви книги, автору, жанру, року написання, статусу оренди та історії оренди
-        public Book(string title, string author, string genre, int year, bool is_Free, List<RentHistory> rent_history)
+        public Book(string title, string author, string genre, int year, bool is_Free, List<int> id_relatedSections)
         {
             Title = title;
             Author = author;
             Genre = genre;
             Year = year;
             isFree = is_Free;
-            Rent_history = rent_history;
+            IdRelatedSections = id_relatedSections;
         }
 
         // конструктор для заповнення назви книги, автору, жанру, року написання та списку секцій 

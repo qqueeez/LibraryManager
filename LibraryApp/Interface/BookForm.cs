@@ -26,6 +26,12 @@ namespace Interface
             Functions.UpdateTreeView(library, ref treeView1);
         }
 
+        // Подія для того щоб оновлювати дерево коли користувач додасть книгу 
+        private void AddBookForm_BookTitleEdit(object sender, EventArgs e)
+        {
+            Functions.UpdateTreeView(library, ref treeView1);
+        }
+
         // Подія для того щоб оновлювати дерево коли користувач додасть каталог 
         private void AddCatalogForm_CatalogAdded(object sender, EventArgs e)
         {
@@ -43,6 +49,8 @@ namespace Interface
         {
             Functions.UpdateTreeView(library, ref treeView1);
         }
+
+
 
         public BookForm(BookLibrary library)
         {
@@ -96,6 +104,7 @@ namespace Interface
             {
                 InfoAboutBookForm form = new InfoAboutBookForm(library, ID);
                 form.BookDeleted += InfoAboutBookForm_BookDeleted;
+                form.BookTitleEdit += AddBookForm_BookTitleEdit;
                 form.ShowDialog();
             }
 
