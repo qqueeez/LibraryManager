@@ -121,5 +121,34 @@ namespace Interface
                 form.ShowDialog();
             }
         }
+
+        private void ButtonSearchBook_Click(object sender, EventArgs e)
+        {
+            string search_data;
+
+            // якщо перевірка на коректність вводу не пройдено(рядок містить пробіли або він пустий)
+            if (string.IsNullOrWhiteSpace(SearchTextBox.Text))
+            {
+                MessageBox.Show("Введіть дані для пошуку");
+                return;
+            }
+
+            // якщо перевірку пройдено
+            search_data = SearchTextBox.Text;
+
+            // Нова бібліотека, яка буде містити лише книги, які було знайдено та секції каталогу до яких вони прив'язані
+            BookLibrary filteredLibrary = library.FunctionSearchBookInLibrary(search_data);
+
+            // Якщо книги не знайдено
+            if (filteredLibrary.book_list.Count == 0)
+            {
+                MessageBox.Show("Книги не знайдено");
+            }
+
+            else
+            {
+                Functions.UpdateTreeView(filteredLibrary, ref treeView1);
+            }
+        }
     }
 }

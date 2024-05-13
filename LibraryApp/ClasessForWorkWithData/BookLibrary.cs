@@ -69,6 +69,11 @@ namespace ClasessForWorkWithData
             book_list.Add(book);
         }
 
+        public void AddBook_In_Library(Book book)
+        {
+            book_list.Add(book);
+        }
+
         // Видалити книгу з бібліотеки
         public void DeleteBook_In_Catalog(int bookID)
         {
@@ -107,6 +112,40 @@ namespace ClasessForWorkWithData
             return book;
         }
 
+        public BookLibrary FunctionSearchBookInLibrary(string search_data)
+        {
+            // Нова бібліотека, яка буде містити лише книги,які було знайдено та секції каталогу до яких вони прив'язані
+            BookLibrary filteredLibrary = new BookLibrary();
+
+            foreach (var book in this.book_list)
+            {
+                // Привести назву книги та рядок для пошуку до одного регістру 
+                if (book.Title.ToLower().Contains(search_data.ToLower()))
+                {
+                    // Пройти по усім id прив'язаних до книги секцій
+                    for (int i = 0; i < book.IdRelatedSections.Count; i++)
+                    {
+                        // Знайти об'єкт типу секція каталогу за id
+                        CatalogSection section = this.FindCatalogSection(book.IdRelatedSections[i]);
+
+                        // Визначити чи є вже така секція у відфільтрованій бібліотеці
+                        CatalogSection resultSearchSection = filteredLibrary.FindCatalogSection(section.Catalog_ID);
+
+                        // Додати секцію каталогу до бібліотеки з результатами пошуку, якщо такої секції ще там немає
+                        if (resultSearchSection == null)
+                        {
+                            filteredLibrary.AddCatalogSection_In_Library(section);
+                        }
+                    }
+                    // Додати книгу до бібліотеки з результатами пошуку
+                    filteredLibrary.AddBook_In_Library(book);
+                }
+            }
+
+            return filteredLibrary;
+
+        }
+
 
         // ============================= КАТАЛОГИ ===============================
 
@@ -138,6 +177,11 @@ namespace ClasessForWorkWithData
             }
 
 
+            catalog_section_list.Add(sect);
+        }
+
+        public void AddCatalogSection_In_Library(CatalogSection sect)
+        {
             catalog_section_list.Add(sect);
         }
 
@@ -250,26 +294,11 @@ namespace ClasessForWorkWithData
         }
 
 
-
-
-        // Знайти книгу у бібліотеці
-        //public Book FindBook_In_Library(int id)
-        //{
-            
-        //}
-
-
         // Відв'язати книги від видаленої секції каталогу
         public void Unlink_Books_from_Deleted_Section(float id_RemovedSubsection)
         {
             
         }
-
-        // Пошук книг за назвою
-        //public BookLibrary FunctionSearchBookInLibrary(string search_data)
-        //{
-
-        //}
 
         // Повернення книги читачем та змінення статусу книги, а також додавання в історію книги та читача дати повернення 
         public void Return_Book(Book book)
