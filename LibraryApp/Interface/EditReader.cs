@@ -20,7 +20,7 @@ namespace Interface
         private int readerID { get; set; }
 
 
-
+        // Конструктор класу EditReader
         public EditReader(BookLibrary library, int readerID)
         {
             this.library = library;

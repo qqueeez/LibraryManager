@@ -63,11 +63,11 @@ namespace Interface
                 textBox2.Text = book.Author;
                 textBox3.Text = book.Genre;
                 textBox4.Text = book.Year.ToString();
-                if (book.isFree == true)
-                    textBox5.Text = "Вільна";
+                if (book.isFree)
+                    radioButton1.Checked = true;
                 else
                 {
-                    textBox5.Text = "Зайнята";
+                    radioButton2.Checked = true;
                 }
 
             }
@@ -101,6 +101,10 @@ namespace Interface
         private void buttonSaveChanges_Click(object sender, EventArgs e)
         {
             Book book = library.FindBookByID(Book_ID);
+            if (!book.isFree && radioButton1.Checked)
+            {
+                book.isFree = true;
+            }
 
             // Якщо були якість зміни значень полів книги
             if (textBox1.Text != book.Title || textBox2.Text != book.Author || textBox3.Text != book.Genre || textBox4.Text != book.Year.ToString())
@@ -167,6 +171,8 @@ namespace Interface
                         }
                     }
 
+                    // Перевірка зміни значення радіокнопок
+                    
                     // Редагувати книгу
                     library.EditBook_In_Catalog(book);
                 }
