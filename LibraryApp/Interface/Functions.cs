@@ -165,6 +165,13 @@ namespace Interface
                     }
                 }
             }
+
+            foreach (DataGridViewColumn column in dg.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         public static DataGridView DisplayInfoAboutReadersInDataGrid(List<Reader> users, BookLibrary library, DataGridView dg)
