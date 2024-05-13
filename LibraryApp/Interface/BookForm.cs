@@ -50,7 +50,11 @@ namespace Interface
             Functions.UpdateTreeView(library, ref treeView1);
         }
 
-
+        // Подія для того щоб оновлювати дерево коли користувач оновить назву каталогу
+        private void EditCatalogForm_CatalogEdit(object sender, EventArgs e)
+        {
+            Functions.UpdateTreeView(library, ref treeView1);
+        }
 
         public BookForm(BookLibrary library)
         {
@@ -113,6 +117,7 @@ namespace Interface
             {
                 EditCatalogForm form = new EditCatalogForm(library, ID);
                 form.CatalogDeleted += EditCatalogForm_CatalogDeleted;
+                form.CatalogEdit += EditCatalogForm_CatalogEdit;
                 form.ShowDialog();
             }
         }

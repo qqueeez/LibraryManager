@@ -15,7 +15,10 @@ namespace Interface
     public partial class EditCatalogForm : Form
     {
         public event EventHandler CatalogDeleted;
+
+        public event EventHandler CatalogEdit;
         private int Catalog_ID { get; set; }
+
         BookLibrary library;
 
         protected virtual void OnCatalogDeleted()
@@ -25,6 +28,16 @@ namespace Interface
             {
                 // Виклик події
                 CatalogDeleted(this, EventArgs.Empty);
+            }
+        }
+
+        protected virtual void OnCatalogEdit()
+        {
+            // Перевірка чи є підписники на подію
+            if (CatalogEdit != null)
+            {
+                // Виклик події
+                CatalogEdit(this, EventArgs.Empty);
             }
         }
 
@@ -70,6 +83,45 @@ namespace Interface
                 // Закрити форму
                 this.Close();
             }
+        }
+
+        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        {
+            CatalogSection catalog = library.FindCatalogSection(Catalog_ID);
+
+            // Якщо були якість зміни значень полів книги
+            if (textBox1.Text != catalog.CatalogTitle)
+            {
+                string infoToDisplay = "Зберегти зміни?";
+                YesNoForm choice = new YesNoForm(infoToDisplay);
+                DialogResult result = choice.ShowDialog();
+
+
+                if (result == DialogResult.Yes)
+                {
+
+                    // Перевірка зміни значення textBox1.Text - Назва каталогу
+                    if (textBox1.Text != catalog.CatalogTitle)
+                    {
+                        // Якщо вміст елемента textbox - пустий рядок або пробіл
+                        if (string.IsNullOrWhiteSpace(textBox1.Text))
+                        {
+                            errorProvider1.SetError(textBox1, "Невірний формат");
+                            return;
+                        }
+                        else
+                        {
+                            catalog.CatalogTitle = textBox1.Text;
+                            errorProvider1.SetError(textBox1, "");
+                            OnCatalogEdit();
+                        }
+                    }
+
+                    // Редагувати каталог
+                    library.EditNameCatalog_In_Library(Catalog_ID, catalog.CatalogTitle);
+                }
+            }
+            this.Close();
         }
     }
 }

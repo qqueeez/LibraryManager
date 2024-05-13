@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.buttonDeleteCatalog = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +61,7 @@
             this.buttonSaveChanges.TabIndex = 2;
             this.buttonSaveChanges.Text = "Зберегти";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
+            this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
             // 
             // buttonDeleteCatalog
             // 
@@ -68,6 +72,10 @@
             this.buttonDeleteCatalog.Text = "Видалити каталог";
             this.buttonDeleteCatalog.UseVisualStyleBackColor = true;
             this.buttonDeleteCatalog.Click += new System.EventHandler(this.buttonDeleteCatalog_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // EditCatalogForm
             // 
@@ -81,6 +89,7 @@
             this.Name = "EditCatalogForm";
             this.Text = "EditCatalogForm";
             this.Load += new System.EventHandler(this.EditCatalogForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,5 +101,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonSaveChanges;
         private System.Windows.Forms.Button buttonDeleteCatalog;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
