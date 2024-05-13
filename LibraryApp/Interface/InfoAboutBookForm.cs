@@ -101,6 +101,8 @@ namespace Interface
         private void buttonSaveChanges_Click(object sender, EventArgs e)
         {
             Book book = library.FindBookByID(Book_ID);
+
+            // Умова для зміни статуса книги
             if (!book.isFree && radioButton1.Checked)
             {
                 book.isFree = true;
