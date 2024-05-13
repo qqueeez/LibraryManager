@@ -75,12 +75,13 @@ namespace ClasessForWorkWithData
         }
 
         // Видалити книгу з бібліотеки
-        public void DeleteBook_In_Catalog(int bookID)
+        public void DeleteBook_In_Catalog(int bookID, ref List<int> RemovedBooks)
         {
             Book bookToRemove = FindBookByID(bookID);
             if (bookToRemove != null)
             {
                 book_list.Remove(bookToRemove);
+                RemovedBooks.Add(bookToRemove.Book_ID);
             }
         }
 
@@ -186,12 +187,13 @@ namespace ClasessForWorkWithData
         }
 
         // Видалити секцію каталогу з бібліотеки
-        public void DeleteCatalog_In_Library(int Catalog_ID)
+        public void DeleteCatalog_In_Library(int Catalog_ID, ref List<int> id_RemovedCatalogs)
         {
             CatalogSection CatalogToRemove = FindCatalogSection(Catalog_ID);
             if (CatalogToRemove != null)
             {
                 catalog_section_list.Remove(CatalogToRemove);
+                id_RemovedCatalogs.Add(CatalogToRemove.Catalog_ID);
             }
         }
 

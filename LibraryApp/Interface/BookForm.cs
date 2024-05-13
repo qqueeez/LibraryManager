@@ -96,7 +96,7 @@ namespace Interface
             form.ShowDialog();
         }
 
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             TreeNode selectedNode = e.Node;
 
@@ -106,7 +106,7 @@ namespace Interface
             // Якщо натиснутий вузол - книга, відкрити можливість виконати функції над книгою
             if (tag is int && (int)tag >= 10000)
             {
-                InfoAboutBookForm form = new InfoAboutBookForm(library, ID);
+                InfoAboutBookForm form = new InfoAboutBookForm(library, ID, ref id_RemovedBooks);
                 form.BookDeleted += InfoAboutBookForm_BookDeleted;
                 form.BookTitleEdit += AddBookForm_BookTitleEdit;
                 form.ShowDialog();
@@ -115,7 +115,7 @@ namespace Interface
             // Якщо натиснутий вузол - секція каталогу, відкрити можливість виконати функції над секцією каталогу
             else if (tag is int && (int)tag < 10000)
             {
-                EditCatalogForm form = new EditCatalogForm(library, ID);
+                EditCatalogForm form = new EditCatalogForm(library, ID, ref id_RemovedSections);
                 form.CatalogDeleted += EditCatalogForm_CatalogDeleted;
                 form.CatalogEdit += EditCatalogForm_CatalogEdit;
                 form.ShowDialog();
@@ -150,5 +150,6 @@ namespace Interface
                 Functions.UpdateTreeView(filteredLibrary, ref treeView1);
             }
         }
+
     }
 }

@@ -41,11 +41,6 @@ namespace Interface
                 dataGridView1 = Functions.DisplayInfoAboutReadersInDataGrid(library.reader_list, library, dataGridView1);
         }
 
-        private void buttonSaveChanges_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAddReader_Click(object sender, EventArgs e)
         {
             AddReaderForm form = new AddReaderForm(library, id_RemovedReaders);
@@ -53,9 +48,5 @@ namespace Interface
             form.ShowDialog();
         }
 
-        private void editReader_Click_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

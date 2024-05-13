@@ -58,6 +58,12 @@ namespace Interface
                 return;
             }
 
+            if (endDate < startDate)
+            {
+                MessageBox.Show("Будь ласка, виберіть коректний період оренди");
+                return;
+            }
+
             // Отримання першого вибраного елемента зі списку
             string nameBook = listBox1.SelectedItem.ToString();
 

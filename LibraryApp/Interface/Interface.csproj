@@ -103,6 +103,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowReaderRentHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowReaderRentHistoryForm.Designer.cs">
+      <DependentUpon>ShowReaderRentHistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowReadersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShowReaderRentHistoryForm.resx">
+      <DependentUpon>ShowReaderRentHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowReadersForm.resx">
       <DependentUpon>ShowReadersForm.cs</DependentUpon>
     </EmbeddedResource>

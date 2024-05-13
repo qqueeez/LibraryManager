@@ -61,7 +61,6 @@ namespace Interface
 
                 if (result == DialogResult.Yes)
                 {
-                    int mark;
 
                     // Перевірка зміни значення textBox1.Text - Ім'я
                     if (textBox1.Text != reader.Full_name)

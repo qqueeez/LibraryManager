@@ -21,6 +21,8 @@ namespace Interface
 
         BookLibrary library;
 
+        private List<int> RemovedSections;
+
         protected virtual void OnCatalogDeleted()
         {
             // Перевірка чи є підписники на подію
@@ -41,7 +43,7 @@ namespace Interface
             }
         }
 
-        public EditCatalogForm(BookLibrary library, int ID)
+        public EditCatalogForm(BookLibrary library, int ID, ref List<int> RemovedSections)
         {
             this.library = library;
             this.Catalog_ID = ID;
@@ -56,7 +58,7 @@ namespace Interface
 
         private void buttonDeleteCatalog_Click(object sender, EventArgs e)
         {
-            library.DeleteCatalog_In_Library(Catalog_ID);
+            library.DeleteCatalog_In_Library(Catalog_ID, ref RemovedSections);
             OnCatalogDeleted();
             this.Close();
         }

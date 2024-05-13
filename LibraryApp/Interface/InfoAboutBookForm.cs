@@ -22,6 +22,8 @@ namespace Interface
 
         public event EventHandler BookTitleEdit;
 
+        private List<int> RemovedBooks;
+
         protected virtual void OnBookDeleted()
         {
             // Перевірка чи є підписники на подію
@@ -42,8 +44,9 @@ namespace Interface
             }
         }
 
-        public InfoAboutBookForm(BookLibrary library, int book_ID)
+        public InfoAboutBookForm(BookLibrary library, int book_ID, ref List<int> RemovedBooks)
         {
+            this.RemovedBooks = RemovedBooks;
             this.library = library;
             Book_ID = book_ID;
             InitializeComponent();
@@ -93,7 +96,7 @@ namespace Interface
 
         private void ButtonDeleteBook_Click(object sender, EventArgs e)
         {
-            library.DeleteBook_In_Catalog(Book_ID);
+            library.DeleteBook_In_Catalog(Book_ID, ref RemovedBooks);
             OnBookDeleted();
             this.Close();
         }
@@ -101,7 +104,6 @@ namespace Interface
         private void buttonSaveChanges_Click(object sender, EventArgs e)
         {
             Book book = library.FindBookByID(Book_ID);
-
             // Умова для зміни статуса книги
             if (!book.isFree && radioButton1.Checked)
             {
