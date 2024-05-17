@@ -44,6 +44,7 @@ namespace Interface
             }
         }
 
+        // Конструктор
         public InfoAboutBookForm(BookLibrary library, int book_ID, ref List<int> RemovedBooks)
         {
             this.RemovedBooks = RemovedBooks;
