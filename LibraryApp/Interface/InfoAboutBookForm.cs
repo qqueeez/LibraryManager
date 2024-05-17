@@ -44,7 +44,7 @@ namespace Interface
             }
         }
 
-        // Конструктор для класу інформація про книгу
+        // Конструктор для класу інформація про книгу для створення екземпляру класу and here's a test text for the exercise 5 in the laboratory work 
         public InfoAboutBookForm(BookLibrary library, int book_ID, ref List<int> RemovedBooks)
         {
             this.RemovedBooks = RemovedBooks;
