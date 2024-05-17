@@ -45,6 +45,7 @@ namespace Interface
 
         public EditCatalogForm(BookLibrary library, int ID, ref List<int> RemovedSections)
         {
+            this.RemovedSections = RemovedSections;
             this.library = library;
             this.Catalog_ID = ID;
             InitializeComponent();
